@@ -67,9 +67,9 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce z-20">
         <span className="text-sm text-muted-foreground">Scroll</span>
-        <ArrowDown size={24} className="text-muted-foreground" />
+        <ArrowDown size={22} className="text-muted-foreground" />
       </div>
     </section>
   );
