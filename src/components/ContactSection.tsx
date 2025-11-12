@@ -54,17 +54,21 @@ const ContactSection = () => {
           subject: formData.subject,
           message: formData.message,
           _subject: `Portfolio Message: ${formData.subject}`,
-          _captcha: "false",
+          _captcha: "true", // enable Google reCAPTCHA
+          _honeypot: "bot-field", // silent spam trap
+          _next: "https://renn-amm.github.io/Portfolio.github.io/thank-you", // optional redirect page
         }),
       });
 
       if (response.ok) {
-        toast.success("Message sent successfully! 🚀");
+        toast.success("Message sent successfully.");
         setFormData({ name: "", email: "", subject: "", message: "" });
+        // If you prefer an instant in-app redirect instead of FormSubmit redirect, uncomment:
+        // window.location.href = `${import.meta.env.BASE_URL}thank-you`;
       } else {
         toast.error("Failed to send message. Please try again later.");
       }
-    } catch (error) {
+    } catch {
       toast.error("Something went wrong. Please try again or email me directly.");
     } finally {
       setIsSubmitting(false);
@@ -89,9 +93,10 @@ const ContactSection = () => {
             <div>
               <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
               <p className="text-muted-foreground mb-8 leading-relaxed">
-                I'm always open to collaboration or new opportunities — drop me a line anytime!
+                I'm always open to collaboration or new opportunities — drop me a line anytime.
               </p>
             </div>
+
             <div className="space-y-4">
               {contactInfo.map((info) => (
                 <a
@@ -143,7 +148,11 @@ const ContactSection = () => {
                 </div>
                 <Input id="subject" value={formData.subject} onChange={handleChange} placeholder="Subject" required />
                 <Textarea id="message" value={formData.message} onChange={handleChange} placeholder="Tell me about your project..." rows={6} required />
-                <Button type="submit" disabled={isSubmitting} className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300">
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300"
+                >
                   <Send size={20} className="mr-2" />
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
