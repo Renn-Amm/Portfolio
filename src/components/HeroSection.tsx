@@ -30,19 +30,19 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden hero-bg-animation"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden hero-bg-animation px-4"
     >
       <div className="absolute inset-0 bg-gradient-hero"></div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="animate-fade-in flex flex-col items-center justify-center text-center max-w-6xl mx-auto">
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 whitespace-nowrap">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl break-words leading-tight">
             <span className="bg-gradient-primary bg-clip-text text-transparent transition-opacity duration-500">
               {titles[currentTitle]}
             </span>
           </h1>
 
-          <p className="text-2xl md:text-3xl text-muted-foreground mb-10 max-w-3xl leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl leading-relaxed px-2" ">
             Got an idea? Hand it to me and I’ll build it into reality
           </p>
 
