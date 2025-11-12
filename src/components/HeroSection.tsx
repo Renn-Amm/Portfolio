@@ -42,7 +42,7 @@ const HeroSection = () => {
             </span>
           </h1>
 
-          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl leading-relaxed px-2" ">
+          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl leading-relaxed px-2">
             Got an idea? Hand it to me and I’ll build it into reality
           </p>
 
