@@ -57,7 +57,7 @@ const HeroSection = () => {
             <Button
               size="lg"
               variant="outline"
-              classNameborder-2 border-primary hover:bg-gradient-primary hover:text-primary-foreground hover:shadow-glow hover:scale-105 transition-all duration-300 text-lg sm:text-xl px-8 py-3"
+              className="border-2 border-primary hover:bg-gradient-primary hover:text-primary-foreground hover:shadow-glow hover:scale-105 transition-all duration-300 text-lg sm:text-xl px-8 py-3"
               onClick={handleDownloadCV}
             >
               <Download size={24} className="mr-2" />
