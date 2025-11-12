@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -14,8 +14,10 @@ const App = () => (
       <Toaster />
       <Sonner />
       <Routes>
+        <Route path="/Portfolio.github.io" element={<Navigate to="/" replace />} />
+
         <Route path="/" element={<Index />} />
-        {/* Catch-all route */}
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </TooltipProvider>
