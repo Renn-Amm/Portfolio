@@ -54,17 +54,15 @@ const ContactSection = () => {
           subject: formData.subject,
           message: formData.message,
           _subject: `Portfolio Message: ${formData.subject}`,
-          _captcha: "true", // enable Google reCAPTCHA
-          _honeypot: "bot-field", // silent spam trap
-          _next: "https://renn-amm.github.io/Portfolio.github.io/thank-you", // optional redirect page
+          _captcha: "true", 
+          _honeypot: "bot-field", 
+          _next: "https://renn-amm.github.io/Portfolio.github.io/thank-you", 
         }),
       });
 
       if (response.ok) {
         toast.success("Message sent successfully.");
         setFormData({ name: "", email: "", subject: "", message: "" });
-        // If you prefer an instant in-app redirect instead of FormSubmit redirect, uncomment:
-        // window.location.href = `${import.meta.env.BASE_URL}thank-you`;
       } else {
         toast.error("Failed to send message. Please try again later.");
       }
