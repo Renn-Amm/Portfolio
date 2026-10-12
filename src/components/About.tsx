@@ -15,16 +15,20 @@ export function About({ activeSkill, onSkill }: Props) {
         <div className="about">
           <div className="about__text reveal">
             <p>
-              I'm a developer focused on <strong>AI automation</strong> and <strong>full-stack development</strong>. I work
-              with LLM APIs like OpenAI and Claude, write the prompts and glue code that make them reliable, and automate
-              workflows across business tools like HubSpot. On the data side I work with Databricks and Metabase.
+              I'm an <strong>AI &amp; automation specialist</strong> and <strong>full-stack developer</strong> based in
+              Barcelona. I'm currently an AI &amp; Automation Specialist intern at <strong>bsport</strong>, and I hold a
+              master's in Computer Science from Harbour.Space University.
             </p>
             <p>
-              Before AI, I built full-stack and front-end products: a Flask learning platform with Google login and an admin
-              dashboard, and React apps built with designers and back-end developers. That background means I can ship the
-              whole thing, not just the model call.
+              I build automations with n8n and Zapier, work with LLM APIs like OpenAI and Claude, and connect them to the
+              tools teams already use: HubSpot, Intercom, Linear, Google Sheets, Databricks and Metabase. As a freelancer I
+              built a pipeline that tracks viral fashion content for a luxury leather-goods brand.
             </p>
-            <p>I have a Computer Science degree and I'm always looking for the next process worth automating.</p>
+            <p>
+              Before that I built full-stack products: a Flask learning platform with Google login and an admin dashboard,
+              and React apps built with designers and back-end developers. So I can ship the whole thing, not just the
+              automation.
+            </p>
             <a href={profile.cv} className="btn btn--ghost btn--sm" download>
               <DownloadIcon /> Download CV
             </a>

@@ -26,7 +26,8 @@ export const skillGroups: SkillGroup[] = [
       { id: "openai", label: "OpenAI API" },
       { id: "claude", label: "Claude API" },
       { id: "prompt", label: "Prompt engineering" },
-      { id: "automation", label: "Workflow automation" }, // ← swap for the exact tool (n8n, Zapier, Make…)
+      { id: "n8n", label: "n8n" },
+      { id: "zapier", label: "Zapier" },
       { id: "hubspot", label: "HubSpot" },
     ],
   },
@@ -40,6 +41,7 @@ export const skillGroups: SkillGroup[] = [
       { id: "htmlcss", label: "HTML & CSS" },
       { id: "python", label: "Python" },
       { id: "flask", label: "Flask" },
+      { id: "postgresql", label: "PostgreSQL" },
       { id: "sql", label: "MySQL" },
     ],
   },
@@ -48,6 +50,9 @@ export const skillGroups: SkillGroup[] = [
     items: [
       { id: "databricks", label: "Databricks" },
       { id: "metabase", label: "Metabase" },
+      { id: "gsheets", label: "Google Sheets" },
+      { id: "intercom", label: "Intercom" },
+      { id: "linear", label: "Linear" },
       { id: "github", label: "Git & GitHub" },
       { id: "android", label: "Android" },
       { id: "wordpress", label: "WordPress" },
@@ -55,19 +60,38 @@ export const skillGroups: SkillGroup[] = [
   },
 ];
 
-/* Newest first. Add your AI / automation role here, e.g.
-   {
-     when: "2025 — now", title: "AI Automation Developer", org: "Company",
-     note: "One line on scope.",
-     points: ["Built an LLM assistant that …, cutting X by Y%.", "Automated … in HubSpot, saving ~N h/week."],
-   },
-*/
+/* Newest first. Add bullet points with concrete results where you can. */
 export const experience: ExperienceItem[] = [
   {
-    when: "Degree",
+    when: "Aug 2026 — Jan 2027",
+    title: "AI & Automation Specialist Intern",
+    org: "bsport · Barcelona",
+    note: "AI and workflow automation for internal teams at bsport, a management platform for fitness and wellness studios.",
+    points: [
+      // ← add 2–3 concrete things you've built here, e.g. "Built … with the OpenAI API, saving the support team ~N h/week."
+    ],
+  },
+  {
+    when: "2025 — 2026",
+    title: "MSc Computer Science",
+    org: "Harbour.Space University · Barcelona",
+  },
+  {
+    when: "Freelance",
+    title: "Automation Developer",
+    org: "Luxury leather-goods brand · Barcelona",
+    note: "Built an automated pipeline that tracks viral fashion and bag videos in Barcelona and turns them into a structured dataset for the marketing team.",
+    points: [
+      "Collects trending videos about bags and fashion, with posting time, views, likes, comments and captions.",
+      "Enriches each post with creator profile data: names, bios and more.",
+      "Writes everything to Google Sheets automatically, ready for analysis.",
+    ],
+  },
+  {
+    when: "Bachelor's",
     title: "BSc Computer Science",
     org: "International Leadership University",
-    note: "Machine-learning fundamentals, software engineering and web/mobile development. Plus a certificate in Social Media & Online Advertising.",
+    note: "Plus a certificate in Social Media & Online Advertising.",
   },
 ];
 
@@ -164,14 +188,25 @@ export const smallProjects: SmallProject[] = [
    { title: "Internal knowledge assistant", context: "Work project",
      points: ["What it does", "Result / impact"], stack: ["openai", "prompt", "python"] } */
 const aiCases: CaseStudy[] = [];
-const automationCases: CaseStudy[] = [];
+const automationCases: CaseStudy[] = [
+  {
+    title: "Viral content tracker",
+    context: "Freelance · Luxury leather-goods brand, Barcelona",
+    points: [
+      "Automated workflow that finds viral videos about bags and fashion in Barcelona.",
+      "Captures posting time, views, likes, comments and captions for each video.",
+      "Collects creator profile data (names, bios…) and stores everything in Google Sheets for the marketing team.",
+    ],
+    stack: ["gsheets"], // ← add "n8n" or "zapier", whichever you used
+  },
+];
 
 export const tracks: Track[] = [
   {
     id: "fullstack",
     label: "Full-Stack",
     intro: "End-to-end web apps: React front-ends, Python/Flask back-ends, SQL databases, authentication and admin tooling.",
-    skills: ["typescript", "react", "tailwind", "python", "flask", "sql"],
+    skills: ["typescript", "react", "tailwind", "python", "flask", "postgresql"],
     projects: ["dmar", "habit-flow", "progress-path", "rogue"],
     cases: [],
     showSmallProjects: true,
@@ -187,8 +222,8 @@ export const tracks: Track[] = [
   {
     id: "automation",
     label: "Automation",
-    intro: "Automating repetitive business workflows, from CRM processes in HubSpot to reporting with Databricks and Metabase, so teams spend less time on manual work.",
-    skills: ["automation", "hubspot", "databricks", "metabase"],
+    intro: "Automating repetitive business workflows with n8n and Zapier, from data collection pipelines to CRM and support processes in HubSpot, Intercom and Linear, so teams spend less time on manual work.",
+    skills: ["n8n", "zapier", "hubspot", "gsheets", "intercom", "linear"],
     projects: [],
     cases: automationCases,
   },
