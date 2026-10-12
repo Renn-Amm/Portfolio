@@ -1,9 +1,10 @@
 /* =============================================================
-   EXPERIENCE & EDUCATION: the timeline in the About section.
-   Newest first. `note` and `points` are optional.
+   EXPERIENCE & EDUCATION: the two tabs of the timeline in the
+   About section. Newest first. `note` and `points` are optional.
    ============================================================= */
 import type { ExperienceItem } from "../types";
-
+ 
+/* ---------- Experience tab ---------- */
 export const experience: ExperienceItem[] = [
   {
     when: "Aug 2026 — Jan 2027",
@@ -16,11 +17,6 @@ export const experience: ExperienceItem[] = [
     ],
   },
   {
-    when: "2025 — 2026",
-    title: "MSc Computer Science",
-    org: "Harbour.Space University · Barcelona",
-  },
-  {
     when: "Freelance",
     title: "Automation Developer",
     org: "Luxury leather-goods brand · Barcelona",
@@ -31,10 +27,19 @@ export const experience: ExperienceItem[] = [
       "Writes everything to Google Sheets automatically, ready for analysis.",
     ],
   },
+];
+ 
+/* ---------- Education tab ---------- */
+export const education: ExperienceItem[] = [
   {
-    when: "Bachelor's",
+    when: "2025 — 2026",
+    title: "MSc Computer Science",
+    org: "Harbour.Space University · Barcelona",
+  },
+  {
+    when: "2022 — 2025",
     title: "BSc Computer Science",
     org: "International Leadership University",
-    note: "Plus a certificate in Social Media & Online Advertising.",
+    note: "GPA 3.5 / 4.0. Plus a certificate in Social Media & Online Advertising.",
   },
 ];

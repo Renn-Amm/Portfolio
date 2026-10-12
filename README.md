@@ -1,15 +1,15 @@
 # portfolio
-
+ 
 Personal portfolio of **Aung Min Myat**, AI automation & full-stack developer.
-
+ 
 **Live:** https://renn-amm.github.io/portfolio/
-
+ 
 React 18 + TypeScript + Vite. Deployed to GitHub Pages by GitHub Actions on every push to `main`.
-
+ 
 ---
-
+ 
 ## Where to edit what
-
+ 
 | I want to change…                         | Edit this file                          |
 | ----------------------------------------- | --------------------------------------- |
 | Name, links, CV, photo, hero text, About  | `src/content/profile.ts`                |
@@ -23,13 +23,13 @@ React 18 + TypeScript + Vite. Deployed to GitHub Pages by GitHub Actions on ever
 | Menu items                                | `NAV_LINKS` in `src/components/Nav/Nav.tsx` |
 | ⌘K menu entries                           | `commands` in `src/components/CommandPalette/CommandPalette.tsx` |
 | Page order / which sections appear        | `src/App.tsx`                           |
-
+ 
 Content files are plain data. TypeScript checks them against `src/types.ts`, so a typo fails `npm run build` instead of breaking the live site. In About text, `**bold**` is supported.
-
+ 
 ---
-
+ 
 ## Project structure
-
+ 
 ```
 src/
 ├── content/            ← ALL TEXT & DATA (edit these)
@@ -74,49 +74,47 @@ src/
 ├── App.tsx             ← page layout + shared state
 └── main.tsx            ← entry point
 ```
-
+ 
 Each section file starts with a short comment explaining what it shows and where its content comes from.
-
+ 
 ---
-
+ 
 ## Common tasks
-
+ 
 **Add a project**
 1. Add screenshots to `public/assets/img/projects/` (thumbnail ~1200×750, WebP).
 2. Add an entry to `projects` in `src/content/projects.ts`.
 3. Add its `id` to a tab's `projects` list in `src/content/work.ts`.
-
 **Add work without screenshots** (e.g. company work): add a `CaseStudy` to `aiCases` or `automationCases` in `src/content/work.ts`.
-
+ 
 **Add a skill**
 1. Add `{ id, label }` to a group in `src/content/skills.ts`.
 2. Save a single-colour SVG as `public/assets/icons/<id>.svg` ([Simple Icons](https://simpleicons.org) has most brands).
 3. Use the `id` in a project's `stack` and it becomes clickable with a project count.
-
 **Add a section**
 1. Create `src/sections/MySection/MySection.tsx` (+ `.css`).
 2. Render it in `src/App.tsx`.
 3. Add it to `NAV_LINKS` in `src/components/Nav/Nav.tsx` if it should appear in the menu.
-
 ---
-
+ 
 ## Run locally
-
+ 
 Needs Node.js 18+.
-
+ 
 ```bash
 npm install        # first time only
 npm run dev        # http://localhost:5173, live reload
 npm run build      # type-check + production build into dist/
 npm run preview    # serve the production build at http://localhost:4173
 ```
-
+ 
 ## Deploy
-
+ 
 1. Push to `main` on `github.com/Renn-Amm/portfolio`.
 2. One-time: repo **Settings → Pages → Source: GitHub Actions**.
 3. Every push to `main` rebuilds and publishes the site (`.github/workflows/deploy.yml`).
-
-## Credits
-
+## License
+ 
+Code: [MIT](LICENSE). Personal content (`src/content/`, `public/assets/img/`, the CV) is © Aung Min Myat, all rights reserved.
+ 
 Icons: [Simple Icons](https://simpleicons.org) (CC0) and [Lucide](https://lucide.dev) (ISC).

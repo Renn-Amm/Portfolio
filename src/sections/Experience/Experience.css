@@ -1,15 +1,24 @@
-.timeline { display: grid; gap: 1.6rem; }
-
+/* ---------- Tab bar (same style as the Work tabs) ---------- */
+.timeline__tabs { display: flex; margin-bottom: 1.8rem; border-bottom: 1px solid var(--line); }
+.timeline__tab { position: relative; display: inline-flex; align-items: center; gap: .5rem; padding: .7rem 1.1rem; font-size: .92rem; font-weight: 500; white-space: nowrap; color: var(--dim); transition: color .15s; }
+.timeline__tab:hover, .timeline__tab[aria-selected="true"] { color: var(--text); }
+.timeline__tab[aria-selected="true"]::after { content: ""; position: absolute; left: .6rem; right: .6rem; bottom: -1px; height: 2px; background: var(--text); }
+.timeline__tab-count { padding: 0 .35rem; border: 1px solid var(--line-2); border-radius: 4px; font-size: .7rem; color: var(--dim); }
+ 
+/* ---------- Timeline ---------- */
+.timeline { display: grid; gap: 1.6rem; animation: fadeUp .3s ease; }
+ 
 /* date column | details column */
 .timeline__item { display: grid; grid-template-columns: 175px 1fr; gap: 1.5rem; padding-bottom: 1.6rem; border-bottom: 1px solid var(--line); }
 .timeline__item:last-child { padding-bottom: 0; border-bottom: 0; }
-
+ 
 .timeline__when { padding-top: .2rem; font-size: .82rem; color: var(--dim); }
 .timeline__item h4 { font-size: 1.05rem; }
 .timeline__org { margin: .1rem 0 .5rem; font-size: .92rem; color: var(--muted); }
 .timeline__note { font-size: .93rem; color: var(--muted); }
 .timeline__item .bullets { margin-top: .6rem; }
-
+ 
 @media (max-width: 760px) {
   .timeline__item { grid-template-columns: 1fr; gap: .3rem; }
 }
+ 
