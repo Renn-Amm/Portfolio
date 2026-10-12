@@ -1,0 +1,35 @@
+/* =============================================================
+   DESIGN TOKENS: change the whole look from here.
+   Classic monochrome: greys + white, monospace details.
+   ============================================================= */
+:root {
+  /* backgrounds, darkest → lightest */
+  --bg: #0a0a0a;
+  --bg-2: #0e0e0e;
+  --surface: #121212;
+  --surface-2: #1a1a1a;
+
+  /* borders */
+  --line: #222222;
+  --line-2: #333333;
+
+  /* text, brightest → dimmest */
+  --white: #ffffff;
+  --text: #ededed;
+  --muted: #a0a0a0;
+  --dim: #6b6b6b;
+
+  /* fonts */
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* layout */
+  --radius: 10px;
+  --nav-h: 60px;
+  --max-width: 1080px;
+
+  color-scheme: dark;
+}
+
+/* Breakpoints used across the CSS files (CSS variables can't be used in @media):
+   900px = tablet, 760px = mobile */

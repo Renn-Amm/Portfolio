@@ -1,0 +1,117 @@
+/* =============================================================
+   BASE: reset, typography and small shared pieces used by
+   several sections. Section-specific styles live next to each
+   component (e.g. sections/Hero/Hero.css).
+   ============================================================= */
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 8px); }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+button, input, textarea { font: inherit; color: inherit; }
+button { background: none; border: 0; cursor: pointer; }
+ul, ol { list-style: none; }
+::selection { background: var(--white); color: var(--bg); }
+:focus-visible { outline: 1px dashed var(--white); outline-offset: 4px; border-radius: 4px; }
+
+/* inline SVG icons inherit text colour and size */
+svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+svg.fill { fill: currentColor; stroke: none; }
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4 { line-height: 1.15; letter-spacing: -0.02em; font-weight: 600; }
+strong { color: var(--text); font-weight: 600; }
+.mono { font-family: var(--mono); letter-spacing: 0; }
+.dim { color: var(--dim); }
+
+/* ---------- Layout ---------- */
+.container { width: min(var(--max-width), 100% - 2.5rem); margin-inline: auto; }
+.section { padding: clamp(4.5rem, 10vw, 7rem) 0; }
+.skip-link { position: absolute; left: 1rem; top: -3rem; z-index: 200; padding: .5rem 1rem; border-radius: 6px; background: var(--white); color: var(--bg); }
+.skip-link:focus { top: 1rem; }
+
+/* section heading: "01. About ────" */
+.section-title { margin-bottom: 2.6rem; }
+.section-title h2 { display: flex; align-items: center; gap: .7rem; font-size: clamp(1.6rem, 3.5vw, 2.1rem); }
+.section-title__num { font-size: .6em; font-weight: 400; color: var(--dim); }
+.section-title__rule { flex: 1; max-width: 320px; height: 1px; margin-left: .8rem; background: var(--line); }
+.section-title p { max-width: 600px; margin-top: .6rem; color: var(--muted); }
+
+/* sub-heading inside a section: "// Skills & technologies" */
+.sub { margin-top: clamp(3.5rem, 7vw, 5rem); }
+.sub__title { font-size: 1.2rem; margin-bottom: .35rem; }
+.sub__hint { margin-bottom: 1.4rem; font-size: .88rem; color: var(--dim); }
+
+/* ---------- Buttons & links ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  padding: .7rem 1.25rem; border: 1px solid transparent; border-radius: 6px;
+  font-size: .93rem; font-weight: 500; text-decoration: none;
+  transition: background .15s, border-color .15s, color .15s;
+}
+.btn--solid { background: var(--white); color: #000; }
+.btn--solid:hover { background: #d4d4d4; }
+.btn--ghost { border-color: var(--line-2); color: var(--text); }
+.btn--ghost:hover { border-color: var(--text); }
+.btn--sm { padding: .5rem .95rem; font-size: .86rem; }
+
+.icon-btn { width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid var(--line-2); border-radius: 6px; color: var(--muted); transition: color .15s, border-color .15s; }
+.icon-btn:hover { color: var(--text); border-color: var(--text); }
+.icon-btn--sm { width: 30px; height: 30px; }
+
+.link-btn { color: inherit; text-decoration: none; }
+.link-btn:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+.text-link { display: inline-flex; align-items: center; gap: .4rem; font-size: .88rem; color: var(--muted); text-decoration: none; transition: color .15s; }
+.text-link:hover { color: var(--text); }
+.text-link.is-muted { color: var(--dim); cursor: default; }
+
+/* small grey label above a title: "Full-stack web app" */
+.kicker { margin-bottom: .3rem; font-size: .74rem; color: var(--dim); }
+
+/* ---------- Shared lists ---------- */
+/* "▹" bullet list */
+.bullets { display: grid; gap: .45rem; }
+.bullets li { position: relative; padding-left: 1.2rem; font-size: .94rem; color: var(--muted); }
+.bullets li::before { content: "▹"; position: absolute; left: 0; top: 0; font-family: var(--mono); color: var(--dim); }
+
+/* tech tags under cards: "React  TypeScript  Python" */
+.tags { display: flex; flex-wrap: wrap; gap: .3rem .9rem; font-size: .76rem; color: var(--dim); }
+.tags li.is-match { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+
+/* skill logo drawn as a mask so it takes the text colour */
+.skill-icon {
+  display: block; flex-shrink: 0; background-color: currentColor;
+  -webkit-mask-position: center; mask-position: center;
+  -webkit-mask-size: contain; mask-size: contain;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+}
+
+/* ---------- Scroll reveal (see hooks/useReveal.ts) ---------- */
+.reveal { opacity: 0; translate: 0 16px; transition: opacity .6s ease, translate .6s ease; }
+.reveal.is-visible { opacity: 1; translate: 0 0; }
+
+/* ---------- Animations ---------- */
+@keyframes blink { 50% { opacity: 0; } }
+@keyframes fade { from { opacity: 0; } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 760px) {
+  .section-title__rule { display: none; }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  .reveal { opacity: 1; translate: none; }
+}

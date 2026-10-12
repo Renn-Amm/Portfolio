@@ -1,12 +1,18 @@
+/* =============================================================
+   ICONS
+   - SkillIcon: logo files from public/assets/icons/<id>.svg
+   - the rest: small inline UI icons (GitHub, mail, arrows…)
+   ============================================================= */
 import type { CSSProperties } from "react";
 
-/** Monochrome skill icon: the SVG file is used as a mask, so it takes the text colour. */
+/** Monochrome skill logo. The SVG is used as a mask, so it takes the text colour. */
 export function SkillIcon({ id, size = 32 }: { id: string; size?: number }) {
   const url = `url("assets/icons/${id}.svg")`;
   const style: CSSProperties = { width: size, height: size, WebkitMaskImage: url, maskImage: url };
   return <span className="skill-icon" style={style} aria-hidden="true" />;
 }
 
+/* ---------- UI icons ---------- */
 type P = { className?: string };
 const base = { viewBox: "0 0 24 24", "aria-hidden": true } as const;
 
@@ -40,9 +46,6 @@ export const CloseIcon = ({ className }: P) => (
 );
 export const ChevronIcon = ({ dir, className }: P & { dir: "left" | "right" }) => (
   <svg {...base} className={className}><path d={dir === "left" ? "M15 18l-6-6 6-6" : "M9 6l6 6-6 6"} /></svg>
-);
-export const ArrowIcon = ({ className }: P) => (
-  <svg {...base} className={className}><path d="M5 12h14M13 6l6 6-6 6" /></svg>
 );
 export const SearchIcon = ({ className }: P) => (
   <svg {...base} className={className}><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>

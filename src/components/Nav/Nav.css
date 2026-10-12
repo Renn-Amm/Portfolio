@@ -1,0 +1,37 @@
+/* ---------- Nav bar ---------- */
+.nav { position: fixed; inset: 0 0 auto; z-index: 100; height: var(--nav-h); background: rgba(10, 10, 10, .85); backdrop-filter: blur(8px); border-bottom: 1px solid transparent; transition: border-color .2s; }
+.nav.is-scrolled { border-color: var(--line); }
+.nav__inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+
+.nav__logo { font-size: 1.02rem; font-weight: 600; text-decoration: none; }
+.nav__logo .mono { color: var(--dim); }
+
+/* ---------- Links ---------- */
+.nav__links { display: flex; gap: 1.6rem; }
+.nav__links a { font-size: .9rem; color: var(--muted); text-decoration: none; transition: color .15s; }
+.nav__links a:hover, .nav__links a.is-active { color: var(--text); }
+.nav__num { font-size: .78rem; color: var(--dim); }
+
+/* ---------- Right side: ⌘K + burger ---------- */
+.nav__actions { display: flex; align-items: center; gap: .5rem; }
+.nav__kbd { display: inline-flex; align-items: center; gap: .5rem; height: 32px; padding: 0 .65rem; border: 1px solid var(--line-2); border-radius: 6px; font-size: .76rem; color: var(--muted); transition: color .15s, border-color .15s; }
+.nav__kbd:hover { color: var(--text); border-color: var(--text); }
+
+.nav__toggle { display: none; width: 38px; height: 38px; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
+.nav__toggle span { width: 18px; height: 1.5px; background: currentColor; transition: transform .2s; }
+.nav__toggle[aria-expanded="true"] span:first-child { transform: translateY(3.25px) rotate(45deg); }
+.nav__toggle[aria-expanded="true"] span:last-child { transform: translateY(-3.25px) rotate(-45deg); }
+
+/* ---------- Mobile: links become a drop-down ---------- */
+@media (max-width: 760px) {
+  .nav__toggle { display: flex; }
+  .nav__kbd .mono { display: none; }
+  .nav__links {
+    position: fixed; inset: var(--nav-h) 0 auto; z-index: -1;
+    flex-direction: column; gap: 0; padding: .4rem 1.25rem 1rem;
+    background: var(--bg); border-bottom: 1px solid var(--line);
+    transform: translateY(-130%); transition: transform .25s ease;
+  }
+  .nav__links.is-open { transform: translateY(0); }
+  .nav__links a { display: block; padding: .8rem 0; font-size: 1rem; }
+}

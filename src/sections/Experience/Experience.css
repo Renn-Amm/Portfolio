@@ -1,0 +1,15 @@
+.timeline { display: grid; gap: 1.6rem; }
+
+/* date column | details column */
+.timeline__item { display: grid; grid-template-columns: 175px 1fr; gap: 1.5rem; padding-bottom: 1.6rem; border-bottom: 1px solid var(--line); }
+.timeline__item:last-child { padding-bottom: 0; border-bottom: 0; }
+
+.timeline__when { padding-top: .2rem; font-size: .82rem; color: var(--dim); }
+.timeline__item h4 { font-size: 1.05rem; }
+.timeline__org { margin: .1rem 0 .5rem; font-size: .92rem; color: var(--muted); }
+.timeline__note { font-size: .93rem; color: var(--muted); }
+.timeline__item .bullets { margin-top: .6rem; }
+
+@media (max-width: 760px) {
+  .timeline__item { grid-template-columns: 1fr; gap: .3rem; }
+}

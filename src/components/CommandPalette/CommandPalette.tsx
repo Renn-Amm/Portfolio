@@ -1,6 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { profile, projects, tracks } from "../data";
-import { SearchIcon } from "./Icons";
+/* =============================================================
+   COMMAND MENU (⌘K / Ctrl+K): search and jump to sections,
+   work tabs and projects, or run quick actions.
+   Add entries to the `commands` list below.
+   ============================================================= */
+import { profile, projects, tracks } from "../../content";
+import { SearchIcon } from "../Icons";
+import "./CommandPalette.css";
 
 export interface Command {
   id: string;
@@ -19,7 +25,6 @@ interface Props {
   copyEmail: () => void;
 }
 
-/** ⌘K / Ctrl+K menu: jump to sections, tabs and projects, or run quick actions. */
 export function CommandPalette({ open, onClose, goTo, openProject, openTab, copyEmail }: Props) {
   const [query, setQuery] = useState("");
   const [sel, setSel] = useState(0);

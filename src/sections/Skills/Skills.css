@@ -1,0 +1,22 @@
+/* three columns separated by 1px lines */
+.skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; overflow: hidden; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); }
+
+.skills__group { padding: 1.3rem 1.2rem 1.4rem; background: var(--bg); }
+.skills__group h4 { margin-bottom: 1rem; font-size: .78rem; font-weight: 500; text-transform: lowercase; color: var(--dim); }
+.skills__group h4::before { content: "# "; }
+.skills__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: .3rem; }
+
+/* ---------- One skill tile: icon on top, name below ---------- */
+.skill { position: relative; display: flex; flex-direction: column; align-items: center; gap: .55rem; padding: .9rem .3rem .75rem; border: 1px solid transparent; border-radius: 8px; text-align: center; color: var(--muted); transition: background .15s, color .15s, border-color .15s; }
+.skill .skill-icon { opacity: .75; transition: opacity .15s; }
+.skill__name { font-size: .76rem; line-height: 1.25; }
+.skill__count { position: absolute; top: .35rem; right: .4rem; font-size: .62rem; color: var(--dim); }
+
+/* hover / selected */
+.skill.is-clickable:hover, .skill.is-active { background: var(--surface); color: var(--text); }
+.skill.is-clickable:hover .skill-icon, .skill.is-active .skill-icon { opacity: 1; }
+.skill.is-active { border-color: var(--text); }
+
+@media (max-width: 900px) {
+  .skills { grid-template-columns: 1fr; }
+}

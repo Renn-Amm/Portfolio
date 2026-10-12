@@ -1,7 +1,14 @@
 import { useEffect, useRef, useState } from "react";
-import { skillLabel } from "../data";
-import type { Project } from "../types";
-import { ChevronIcon, CloseIcon, ExternalIcon, GitHubIcon, LockIcon } from "./Icons";
+/* =============================================================
+   PROJECT MODAL: opens when a project card is clicked.
+   Left: screenshot gallery (arrows, thumbnails, swipe).
+   Right: summary, what I built, stack, links.
+   Uses the native <dialog> for focus trapping and Esc.
+   ============================================================= */
+import type { Project } from "../../types";
+import { ChevronIcon, CloseIcon, ExternalIcon, GitHubIcon, LockIcon } from "../Icons";
+import { Tags } from "../Tags";
+import "./ProjectModal.css";
 
 interface Props {
   project: Project | null;
@@ -13,7 +20,7 @@ export function ProjectModal({ project, onClose }: Props) {
   const [idx, setIdx] = useState(0);
   const touchX = useRef<number | null>(null);
 
-  // open/close the native <dialog> (gives focus trapping + Esc for free)
+  // open / close the native <dialog> when `project` changes
   useEffect(() => {
     const d = ref.current;
     if (!d) return;
@@ -37,6 +44,7 @@ export function ProjectModal({ project, onClose }: Props) {
     return () => d.removeEventListener("close", handleClose);
   }, [onClose]);
 
+  /* ---------- gallery ---------- */
   const shots = project?.gallery ?? [];
   const multi = shots.length > 1;
   const go = (delta: number) => setIdx((i) => (i + delta + shots.length) % shots.length);
@@ -94,13 +102,13 @@ export function ProjectModal({ project, onClose }: Props) {
           </div>
 
           <div className="modal__body">
-            <p className="card__kicker mono">{project.kicker}</p>
+            <p className="kicker mono">{project.kicker}</p>
             <h3 id="modal-title">{project.title}</h3>
             <p className="modal__summary">{project.summary}</p>
             <h4 className="mono">what I built</h4>
             <ul className="bullets">{project.highlights.map((h) => <li key={h}>{h}</li>)}</ul>
             <h4 className="mono">stack</h4>
-            <ul className="tags mono">{project.stack.map((s) => <li key={s}>{skillLabel[s] ?? s}</li>)}</ul>
+            <Tags stack={project.stack} />
             <div className="modal__links">
               {project.demo && <a className="btn btn--solid btn--sm" href={project.demo} target="_blank" rel="noopener"><ExternalIcon /> Live demo</a>}
               {project.repo ? (

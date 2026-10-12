@@ -1,7 +1,12 @@
+/* =============================================================
+   NAV: fixed top bar with section links, ⌘K button and the
+   mobile menu. Edit NAV_LINKS to add/rename menu items.
+   ============================================================= */
 import { useEffect, useState } from "react";
-import { SearchIcon } from "./Icons";
+import { SearchIcon } from "../Icons";
+import "./Nav.css";
 
-export const SECTIONS = [
+export const NAV_LINKS = [
   { id: "top", label: "Home" },
   { id: "about", label: "About" },
   { id: "work", label: "Work" },
@@ -9,15 +14,16 @@ export const SECTIONS = [
 ] as const;
 
 interface Props {
-  active: string;
+  activeId: string;
   onOpenPalette: () => void;
 }
 
-export function Nav({ active, onOpenPalette }: Props) {
-  const [open, setOpen] = useState(false);
+export function Nav({ activeId, onOpenPalette }: Props) {
+  const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const isMac = typeof navigator !== "undefined" && /Mac|iPhone|iPad/.test(navigator.platform);
+  const isMac = /Mac|iPhone|iPad/.test(navigator.platform);
 
+  // add a bottom border once the page is scrolled
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
     onScroll();
@@ -25,8 +31,9 @@ export function Nav({ active, onOpenPalette }: Props) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Esc closes the mobile menu
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMenuOpen(false);
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
   }, []);
@@ -37,28 +44,34 @@ export function Nav({ active, onOpenPalette }: Props) {
         <a href="#top" className="nav__logo" aria-label="Back to top">
           <span className="mono">~/</span>aung
         </a>
+
         <nav aria-label="Main">
-          <ul id="nav-links" className={`nav__links${open ? " is-open" : ""}`}>
-            {SECTIONS.map((s, i) => (
-              <li key={s.id}>
-                <a href={`#${s.id}`} className={active === s.id ? "is-active" : undefined} onClick={() => setOpen(false)}>
-                  <span className="mono nav__num">0{i}.</span> {s.label}
+          <ul id="nav-links" className={`nav__links${menuOpen ? " is-open" : ""}`}>
+            {NAV_LINKS.map((link, i) => (
+              <li key={link.id}>
+                <a
+                  href={`#${link.id}`}
+                  className={activeId === link.id ? "is-active" : undefined}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <span className="mono nav__num">0{i}.</span> {link.label}
                 </a>
               </li>
             ))}
           </ul>
         </nav>
+
         <div className="nav__actions">
-          <button className="kbd-btn" onClick={onOpenPalette} aria-label="Open command menu">
+          <button className="nav__kbd" onClick={onOpenPalette} aria-label="Open command menu">
             <SearchIcon />
             <span className="mono">{isMac ? "⌘K" : "Ctrl K"}</span>
           </button>
           <button
             className="nav__toggle"
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
             aria-controls="nav-links"
-            onClick={() => setOpen((o) => !o)}
+            onClick={() => setMenuOpen((open) => !open)}
           >
             <span />
             <span />

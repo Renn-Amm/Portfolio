@@ -1,0 +1,13 @@
+/* ---------- Command menu ---------- */
+.palette { position: fixed; inset: 0; z-index: 400; background: rgba(0, 0, 0, .7); display: flex; justify-content: center; align-items: flex-start; padding: 12vh 1rem 1rem; animation: fade .15s ease; }
+.palette__box { width: min(560px, 100%); background: var(--bg-2); border: 1px solid var(--line-2); border-radius: 12px; overflow: hidden; box-shadow: 0 30px 80px rgba(0, 0, 0, .6); }
+.palette__input { display: flex; align-items: center; gap: .7rem; padding: .9rem 1rem; border-bottom: 1px solid var(--line); color: var(--dim); }
+.palette__input input { flex: 1; background: none; border: 0; outline: none; color: var(--text); font-size: .98rem; }
+.palette__input kbd { font-size: .7rem; padding: .1rem .4rem; border: 1px solid var(--line-2); border-radius: 4px; }
+.palette__list { max-height: min(360px, 55vh); overflow-y: auto; padding: .4rem; }
+.palette__group { font-size: .7rem; color: var(--dim); padding: .7rem .7rem .3rem; text-transform: lowercase; }
+.palette__item { width: 100%; display: flex; justify-content: space-between; gap: 1rem; padding: .6rem .7rem; border-radius: 6px; text-align: left; font-size: .92rem; }
+.palette__item .mono { font-size: .74rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.palette__item[aria-selected="true"] { background: var(--surface-2); }
+.palette__empty { padding: 1.2rem .7rem; font-size: .85rem; color: var(--dim); }
+.palette__foot { padding: .6rem 1rem; border-top: 1px solid var(--line); font-size: .7rem; }

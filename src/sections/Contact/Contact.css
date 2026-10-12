@@ -1,0 +1,22 @@
+.contact { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(2rem, 6vw, 4rem); }
+
+/* ---------- Form ---------- */
+.contact__field { margin-bottom: 1.1rem; }
+.contact__field label { display: block; margin-bottom: .4rem; font-size: .78rem; color: var(--dim); }
+.contact__field label::after { content: ":"; }
+.contact__field input, .contact__field textarea { width: 100%; padding: .7rem .85rem; background: var(--bg-2); border: 1px solid var(--line-2); border-radius: 6px; transition: border-color .15s; }
+.contact__field input:focus, .contact__field textarea:focus { outline: none; border-color: var(--text); }
+.contact__field [aria-invalid="true"] { border-style: dashed; border-color: var(--text); }
+.contact__field textarea { min-height: 130px; resize: vertical; }
+.contact__note { margin-top: .8rem; font-size: .75rem; }
+
+/* ---------- Side ---------- */
+.contact__side p { margin-bottom: .8rem; color: var(--muted); }
+.contact__email { display: flex; align-items: center; gap: .7rem; margin: 1.6rem 0 1rem; padding-top: 1.4rem; border-top: 1px solid var(--line); }
+.contact__email a { font-size: .95rem; text-decoration: none; word-break: break-all; }
+.contact__email a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.contact__links { display: flex; flex-wrap: wrap; gap: 1.2rem; }
+
+@media (max-width: 760px) {
+  .contact { grid-template-columns: 1fr; }
+}
