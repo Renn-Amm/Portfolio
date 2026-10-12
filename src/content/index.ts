@@ -38,3 +38,4 @@ export function trackForSkill(skillId: string): Track | undefined {
       (t.showSmallProjects && smallProjects.some((s) => s.stack.includes(skillId))),
   );
 }
+ 

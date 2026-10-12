@@ -43,3 +43,4 @@ export const education: ExperienceItem[] = [
     note: "GPA 3.5 / 4.0. Plus a certificate in Social Media & Online Advertising.",
   },
 ];
+ 
